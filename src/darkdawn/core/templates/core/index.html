@@ -1,0 +1,24 @@
+{% load static %}
+{% load darkdawn_utils %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        @font-face {
+            font-family: Adler;
+            src: url("{% static "assets/fonts/Adler.ttf" %}");
+        }
+
+        h1 {
+            font-family: "Adler";
+        }
+    </style>
+
+</head>
+<body>
+<h1>Dark Dawn Studios</h1>
+{{ 2022|copyright_text }}
+</body>
+</html>
