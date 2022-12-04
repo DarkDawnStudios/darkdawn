@@ -65,7 +65,7 @@ TEMPLATES = [
                 "django.contrib.auth.context_processors.auth",
                 "django.contrib.messages.context_processors.messages",
             ],
-            "libraries": {"project_utils": "utils.templatetags.project_utils"},
+            "libraries": {"darkdawn_utils": "utils.templatetags.darkdawn_utils"},
         },
     },
 ]
