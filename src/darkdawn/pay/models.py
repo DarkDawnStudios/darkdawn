@@ -69,4 +69,4 @@ class Currency(models.Model):
 
     @property
     def is_fiat(self):
-        return dict(SUPPORTED_CURRENCIES).get(self.currency) in SUPPORTED_FIAT_LIST
+        return dict(SUPPORTED_CURRENCIES).get(self.name) in SUPPORTED_FIAT_LIST
