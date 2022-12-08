@@ -4,7 +4,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>{% block title %}{% endblock %} DarkDawn</title>
+    <title>{% block title %}{% endblock %} Dark Dawn</title>
     <link rel="stylesheet" href="{% static 'assets/css/main.css' %}">
     <style>
         @font-face {
@@ -17,7 +17,9 @@
 <body>
 <h1 style="font-family: 'Adler';">Hermetic Order of the Dark Dawn</h1>
 {% block body %}{% endblock %}
-{{ 2022|copyright_text }}
+<footer>
+    <section class="centered">{{ 2022|copyright_text }}</section>
+</footer>
 </body>
 {% block after_body %}{% endblock %}
 </html>
