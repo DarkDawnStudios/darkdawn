@@ -1,0 +1,45 @@
+section {
+    text-align: center;
+    font-size: 1.2em;
+    word-wrap: break-word;
+}
+section.centered-strict {
+    text-align: left;
+    margin-left: 20vw;
+    margin-right: 20vw;
+}
+section.centered {
+    text-align: left;
+    margin-left: 10vw;
+    margin-right: 10vw;
+}
+pre > code {
+    display: block;
+    overflow-x: scroll;
+    color: #073642;
+}
+textarea {
+    resize: none;
+}
+.show-on-mobile {
+    display: none;
+}
+@media screen and (max-width: 950px) {
+    textarea, input {
+        width: 80vw;
+    }
+    section.centered-strict {
+        margin-left: 0;
+        margin-right: 0;
+    }
+    section.centered {
+        margin-left: 0;
+        margin-right: 0;
+    }
+    .hide-on-mobile {
+        display: none;
+    }
+    .show-on-mobile {
+        display: block;
+    }
+}
