@@ -12,7 +12,8 @@ SUPPORTED_FIAT_LIST = (
     "CNY",
     "EUR",
 )
-SUPPORTED_CURRENCY_LIST = SUPPORTED_FIAT_LIST + ("Ethereum",)
+SUPPORTED_CRYPTOCURRENCY_LIST = ("Ethereum",)
+SUPPORTED_CURRENCY_LIST = SUPPORTED_FIAT_LIST + SUPPORTED_CRYPTOCURRENCY_LIST
 SUPPORTED_CURRENCIES = tuple(
     (
         (
@@ -32,8 +33,8 @@ class PayProfile(models.Model):
 
 
 class Currency(models.Model):
-    currency = models.IntegerField(
-        name="currency",
+    name = models.IntegerField(
+        name="currency_name",
         choices=SUPPORTED_CURRENCIES,
         default=0,
     )
