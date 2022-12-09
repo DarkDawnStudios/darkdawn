@@ -11,11 +11,14 @@
             font-family: Adler;
             src: url("{% static "assets/fonts/Adler.ttf" %}");
         }
+        .logo {
+            font-family: 'Adler';
+        }
     </style>
     {% block head %}{% endblock %}
 </head>
 <body>
-<h1 style="font-family: 'Adler';">Hermetic Order of the Dark Dawn</h1>
+<h1 class="logo">Hermetic Order of the Dark Dawn</h1>
 {% block body %}{% endblock %}
 <footer>
     <section class="centered">{{ 2022|copyright_text }}</section>
