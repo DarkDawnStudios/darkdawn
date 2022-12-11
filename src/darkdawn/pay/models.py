@@ -34,7 +34,7 @@ class PayProfile(models.Model):
 
 class Currency(models.Model):
     name = models.IntegerField(
-        name="currency_name",
+        "currency_name",
         choices=SUPPORTED_CURRENCIES,
         default=0,
     )
