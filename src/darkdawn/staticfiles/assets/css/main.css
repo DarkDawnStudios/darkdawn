@@ -24,6 +24,9 @@ textarea {
 .show-on-mobile {
     display: none;
 }
+.warning {
+    color: #ff1111;
+}
 @media screen and (max-width: 950px) {
     textarea, input {
         width: 80vw;
