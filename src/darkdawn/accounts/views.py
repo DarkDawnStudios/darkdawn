@@ -8,19 +8,18 @@ class SignUpView(View):
         return render(request, "accounts/signup.html")
 
     def post(self, request):
-        has_error = False
         error_string = ""
         data = request.POST
+        username = data.get('username')
+        if not username:
+            error_string += "Empty username."
         password = data.get('password')
         password_confirm = data.get('password_confirm')
-        username = data.get('username')
         if not password or not password_confirm:
-            error_string += " Bad password(s)!"
-            has_error = True
+            error_string += " Bad password(s)."
         if password_confirm != password:
-            error_string += " Passwords don't match!"
-            has_error = True
-        if has_error:
+            error_string += " Passwords don't match."
+        if error_string:
             return render(request, "accounts/signup.html", {"error": error_string, "username": username})
 
 
