@@ -6,7 +6,7 @@ from ipware import get_client_ip
 # Create your views here.
 def ping(request):
     ip, _ = get_client_ip(request)
-    return HttpResponse(f"Pinged by {ip}")
+    return HttpResponse(f"Pinged from {ip}")
 
 
 def index(request):

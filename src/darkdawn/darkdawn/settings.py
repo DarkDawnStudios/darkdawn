@@ -12,6 +12,8 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 
 import sys
 from pathlib import Path
+from darkdawn.utils import MappedURL
+
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -137,3 +139,7 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 PAY_SCALE = len(str(sys.maxsize))  # 19
 PAY_FIAT_SCALE = 10**3
+
+URL_MAPPING = {
+    "/favicon.ico": MappedURL(value="assets/img/favicon.ico", is_static=True),
+}

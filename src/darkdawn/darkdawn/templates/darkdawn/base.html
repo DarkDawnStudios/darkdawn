@@ -5,6 +5,7 @@
 <head>
     <meta charset="UTF-8">
     <title>{% block title %}{% endblock %} Dark Dawn</title>
+    {% include "darkdawn/head_extra.html" %}
     <link rel="stylesheet" href="{% static 'assets/css/main.css' %}">
     <style>
         @font-face {
@@ -13,12 +14,27 @@
         }
         .logo {
             font-family: 'Adler';
+            color: #000;
+            margin-top: 1%;
+            margin-left: 1%;
+        }
+        .button {
+            font-size: 1.3em;
+        }
+    </style>
+    <style>
+        @media screen and (max-width: 950px) {
+        {% block mobile_style %}{% endblock %}
         }
     </style>
     {% block head %}{% endblock %}
 </head>
 <body>
 <h1 class="logo">Hermetic Order of the Dark Dawn</h1>
+<section class="centered">
+    <a class="cyberpunk" href="{% url "core:index" %}">Home</a>&nbsp;&nbsp;&nbsp;
+    <a class="cyberpunk" href="{% url "accounts:index" %}">Account</a>&nbsp;&nbsp;&nbsp;
+</section>
 {% block body %}{% endblock %}
 <footer>
     <section class="centered">{{ 2022|copyright_text }}</section>

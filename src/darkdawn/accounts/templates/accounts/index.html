@@ -1,0 +1,22 @@
+{% extends "darkdawn/base.html" %}
+{% block mobile_style %}
+    .pure-button {
+        margin-bottom: 10px;
+    }
+{% endblock %}
+{% block head %}
+    <style>
+    .pure-button {
+        font-size: 1.5em;
+    }
+    </style>
+{% endblock %}
+{% block body %}
+    <section>
+        <h1>Accounts</h1>
+        <a class="pure-button" href="{% url "accounts:signup" %}">Sign Up</a>&nbsp;&nbsp;&nbsp;
+        <a class="pure-button" href="{% url "accounts:signup" %}">Sign In</a>&nbsp;&nbsp;&nbsp;
+        <a class="pure-button" href="{% url "accounts:signup" %}">Recover</a>&nbsp;&nbsp;&nbsp;
+    </section>
+
+{% endblock %}

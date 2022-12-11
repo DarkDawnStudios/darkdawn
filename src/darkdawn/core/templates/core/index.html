@@ -1,1 +1,7 @@
 {% extends 'darkdawn/base.html' %}
+{% block body %}
+    <section>
+        <h2>Welcome, {% if request.user.is_authenticated %}{{ request.user.username }}{% else %}Visitor{% endif %}!</h2>
+        <p>This is the official website of the Dark Dawn.</p>
+    </section>
+{% endblock %}
