@@ -34,7 +34,11 @@
 <section class="centered">
     <a class="cyberpunk" href="{% url "core:index" %}">Home</a>&nbsp;&nbsp;&nbsp;
     <a class="cyberpunk" href="{% url "accounts:index" %}">Accounts</a>&nbsp;&nbsp;&nbsp;
+    {% if request.user.is_authenticated %}
+    <a class="cyberpunk" href="{% url "accounts:logout" %}">Logout</a>&nbsp;&nbsp;&nbsp;
+    {% endif %}
 </section>
+{% if request.user.is_authenticated %}<section class="centered"><h3>Hi, {{ request.user.username }}.</h3></section>{% endif %}
 {% block body %}{% endblock %}
 <footer>
     <section class="centered">{{ 2022|copyright_text }}</section>
