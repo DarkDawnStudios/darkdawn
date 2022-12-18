@@ -2,9 +2,6 @@
 {% block body %}
 <section class="centered-strict">
     <h2>Signing in...</h2>
-    {% if error %}
-    <h4 class="warning">ERROR! {{ error }}</h4>
-    {% endif %}
     <form class="pure-form pure-form-stacked" action="{% url 'accounts:signin' %}" method="POST">
         {% csrf_token %}
         <label for="username-input">Username</label>

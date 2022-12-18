@@ -1,5 +1,4 @@
 django==3.2.*
 django-ipware
 pydantic
-uvicorn[standard]
 gunicorn

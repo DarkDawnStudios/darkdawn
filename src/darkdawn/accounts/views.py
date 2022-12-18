@@ -1,3 +1,5 @@
+import time
+
 from django.contrib.auth import authenticate, get_user_model, login
 from django.contrib.auth import logout as logout_user
 from django.shortcuts import redirect, render, reverse
@@ -71,6 +73,7 @@ class SignInView(View):
         password = request.POST.get("password")
         user = authenticate(request, username=username, password=password)
         if not user or user.is_authenticated is False:
+            time.sleep(1)
             return render(
                 request,
                 "accounts/signin.html",

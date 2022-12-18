@@ -39,6 +39,8 @@
     {% endif %}
 </section>
 {% if request.user.is_authenticated %}<section class="centered"><h3>Hi, {{ request.user.username }}.</h3></section>{% endif %}
+{% if error %}<section class="centered"><h3 style="color: #b94a48">ERROR: {{ error }}</h3></section>{% endif %}
+{% if message %}<section class="centered"><h3 style="color: #b94a48">{{ message }}</h3></section> {% endif %}
 {% block body %}{% endblock %}
 <footer>
     <section class="centered">{{ 2022|copyright_text }}</section>
