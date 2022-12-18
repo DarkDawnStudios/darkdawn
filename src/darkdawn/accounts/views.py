@@ -113,9 +113,22 @@ class ResetPasswordView(View):
             user.set_password(new_password)
             user.save()
         else:
-            return render(request, "accounts/reset_weak_password.html")
+            return render(request, "accounts/weak_password.html", {"is_reset": True})
         return redirect(reverse("core:index"))
 
 
 def reset_weak_password(request):
     user = request.user
+    password = request.POST.get("password")
+    if not password:
+        return render(
+            request,
+            "accounts/weak_password.html",
+            {"is_reset": True, "error": "Empty password!"},
+        )
+    user.set_password(password)
+    return render(
+        request,
+        "accounts/reset_password.html",
+        {"message": "Your password reset is done."},
+    )
