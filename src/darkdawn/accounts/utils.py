@@ -1,7 +1,7 @@
 import re
 
 
-def check_password(p: str):
+def check_password(p: str) -> bool:
     if not p:
         return False
     if len(p) < 6:
