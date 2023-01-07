@@ -25,6 +25,13 @@ class SignUpView(View):
         if user is not None:
             error_string += " This username is taken."
         password = data.get("password")
+        if not password:
+            error_string += " Your password is empty."
+            return render(
+                request,
+                "accounts/signup.html",
+                {"error": error_string, "username": username},
+            )
         password_confirm = data.get("password_confirm")
         if not password or not password_confirm:
             error_string += " Bad password(s)."
@@ -92,17 +99,19 @@ def index(request):
     return render(request, "accounts/index.html")
 
 
-def recover(request):
-    return render(request, "accounts/recover.html")
-
-
 class ResetPasswordView(View):
     def get(self, request):
         return render(request, "accounts/reset_password.html")
 
     def post(self, request):
-        old_password = request.POST.get("old_password")
+        old_password = request.POST.get("password")
         new_password = request.POST.get("new_password")
+        if not new_password:
+            return render(
+                request,
+                "accounts/reset_password.html",
+                {"error": "Your new password is empty!"},
+            )
         user = request.user
         is_old_pwd_correct = user.check_password(old_password)
         if not is_old_pwd_correct:
@@ -115,21 +124,36 @@ class ResetPasswordView(View):
         if is_new_password_safe:
             user.set_password(new_password)
             user.save()
+            login(request, user)
         else:
-            return render(request, "accounts/weak_password.html", {"is_reset": True})
-        return redirect(reverse("core:index"))
+            return render(
+                request,
+                "accounts/weak_password.html",
+                {
+                    "is_reset": True,
+                    "password": old_password,
+                    "new_password": new_password,
+                },
+            )
+        return render(
+            request,
+            "accounts/reset_password.html",
+            {"message": "Your password reset is done."},
+        )
 
 
 def reset_weak_password(request):
     user = request.user
-    password = request.POST.get("password")
-    if not password:
+    new_password = request.POST.get("new_password")
+    if not new_password:
         return render(
             request,
             "accounts/weak_password.html",
             {"is_reset": True, "error": "Empty password!"},
         )
-    user.set_password(password)
+    user.set_password(new_password)
+    user.save()
+    login(request, user)
     return render(
         request,
         "accounts/reset_password.html",

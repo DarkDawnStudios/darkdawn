@@ -11,5 +11,4 @@ urlpatterns = [
     path("signin/", views.SignInView.as_view(), name="signin"),
     path("", views.index, name="index"),
     path("logout/", views.logout, name="logout"),
-    path("recover/", views.recover, name="recover"),
 ]
