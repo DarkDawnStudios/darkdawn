@@ -1,4 +1,5 @@
 import decimal
+import math
 
 from django.contrib.auth import get_user_model
 from django.db import models
@@ -17,6 +18,6 @@ class Balance(models.Model):
         return str(decimal.Decimal(str(self.usd1000x)) / 1000)
 
     def top_up(self, usd):
-        usd1000x = int(usd * 1000)
+        usd1000x = math.ceil(usd * 1000)
         self.usd1000x += usd1000x
         self.save()
